@@ -6,3 +6,5 @@ This repositorie is designed to help students of the Faculty of Information Tech
 - [Facebook](https://facebook.com/muhamedkarajic/)
 - [LinkedIn](https://www.linkedin.com/in/muhamedkarajic/)
 - [Instagram](https://www.instagram.com/muhamedkarajic/)
+- [FIT](https://fit.ba/)
+
