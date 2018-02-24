@@ -38,3 +38,13 @@ int nzd (int a, int b) {
         return a;
     return nzd(b, a % b);
 }
+
+/*
+Prednosti:
+• koncizniji opis algoritma
+• lakše je dokazati korektnost
+
+Nedostaci:
+• uvećano vrijeme izvođenja
+• neki jezici ne podržavaju rekurziju
+*/
