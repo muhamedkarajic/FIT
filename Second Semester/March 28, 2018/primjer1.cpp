@@ -126,6 +126,10 @@ int main()
 
 	ispis(objSandale, sandala);
 
+
+	if (objSandale != nullptr)
+		dealokacijaMemorije(objSandale, sandala);
+
 	dealokacijaMemorije(obj, x);
 
 	system("PAUSE");
