@@ -1,92 +1,88 @@
+//Napisite program za zbrajanje dviju matrice
 #include <iostream>
-
 using namespace std;
 
-void unos(int **matrica, int x)
+//Omoguciit unos vrijednosti elemata matrice sa tastature
+void unosMatrice(int **matrica, const int x)
 {
-	for (size_t i = 0; i < x; i++)
+	for (int i = 0; i < x; i++)
 	{
-		for (size_t j = 0; j < x; j++)
+		for (int j = 0; j < x; j++)
 		{
 			cout << "[" << i << "][" << j << "] = ";
 			cin >> matrica[i][j];
 		}
+		cout << endl;
 	}
 }
 
-void ispis(int **matrica, int x)
+void ispisMatrice(int **matrica, const int x)
 {
-	for (size_t i = 0; i < x; i++)
+	for (int i = 0; i < x; i++)
 	{
-		for (size_t j = 0; j < x; j++)
+		for (int j = 0; j < x; j++)
 		{
 			cout << matrica[i][j] << " ";
 		}
 		cout << endl;
 	}
-	cout << endl;
 }
-void zbirMatrica(int **matricaA, int **matricaB, int **matricaC, int x)
+
+//Kreirati trecu matricu ciji ce elementi biti suma elemenata matrice A i B
+void sumaMatrica(int **matricaA, int **matricaB, int **matricaC, const int x)
 {
-	for (size_t i = 0; i < x; i++)
-		for (size_t j = 0; j < x; j++)
+	for (int i = 0; i < x; i++)
+		for (int j = 0; j < x; j++)
 			matricaC[i][j] = matricaA[i][j] + matricaB[i][j];
 }
 
-void dealokacijaMatrice(int **&matrica, int x)
+//Dealokacija
+void dealocirajMatricu(int **&matrica, int x)
 {
-	for (size_t i = 0; i < x; i++)
+	for (int i = 0; i < x; i++)
 	{
-		delete[] matrica[i];
-		matrica[i] = nullptr;
-	}
-		
+		delete[]matrica[i];
+		matrica[i] = nullptr;		
+	}	
 	delete[] matrica;
 	matrica = nullptr;
 }
 
-
 int main()
 {
+	//Omoguciit unos zeljene velicine matrica (broj redova i kolona istih dimenzija)
 	int x;
-	cout << "kvadratna matrica[][] x = ";
+	cout << "velicina kvadratne matrice x = ";
 	cin >> x;
 
-	int **A = new int*[x];
-	int **B = new int*[x];
-	int **C = new int*[x];
-	
-	for (size_t i = 0; i < x; i++)
+	//Matrice
+	int **MatricaA = new int*[x];
+	int **MatricaB = new int*[x];
+	int **MatricaC = new int*[x];
+
+	for (int i = 0; i < x; i++)
 	{
-		B[i] = new int[x];
-		C[i] = new int[x];
-		A[i] = new int[x];
+		MatricaA[i] = new int[x];
+		MatricaB[i] = new int[x];
+		MatricaC[i] = new int[x];
 	}
-
-	cout << "Unos A: " << endl;
-	unos(A, x);
-
-	cout << "Unos B: " << endl;
-	unos(B, x);
-
-	zbirMatrica(A, B, C, x);
-
+	unosMatrice(MatricaA, x);
+	unosMatrice(MatricaB, x);
 	system("CLS");
-
-	cout << "Ispis A: " << endl;
-	ispis(A, x);
-
-	cout << "Ispis B: " << endl;
-	ispis(B, x);
+	sumaMatrica(MatricaA, MatricaB, MatricaC, x);
 	
-	cout << "Ispis C: " << endl;
-	ispis(C, x);
+	cout << "MatricaA: " << endl;
+	ispisMatrice(MatricaA, x);
 
+	cout << "MatricaB: " << endl;
+	ispisMatrice(MatricaB, x);
 
-	//dealokacija
-	dealokacijaMatrice(A, x);
-	dealokacijaMatrice(B, x);
-	dealokacijaMatrice(C, x);
+	cout << "MatricaC: " << endl;
+	ispisMatrice(MatricaC, x);
+
+	dealocirajMatricu(MatricaA, x);
+	dealocirajMatricu(MatricaB, x);
+	dealocirajMatricu(MatricaC, x);
 
 	system("PAUSE");
 	return 0;
