@@ -181,8 +181,17 @@ bool istaImena(ljubimac *obj, int n)
 	return false;
 }
 
-void dealokacija(ljubimac *&obj)
+void dealokacija(ljubimac *&obj, int n)
 {
+	for (int i = 0; i < n; i++)
+	{
+		delete[] obj[i].ime;
+		delete[] obj[i].vrsta;
+		delete[] obj[i].vrstaCijepljenja;
+		obj[i].ime = nullptr;
+		obj[i].vrsta = nullptr;
+		obj[i].vrstaCijepljenja = nullptr;
+	}
 	delete[] obj;
 	obj = nullptr;
 }
@@ -224,9 +233,9 @@ int main()
 	if (istaImena(ljubimci, n) == true)
 		cout << "Postoje ljubimci sa istim imenima." << endl;
 
-	dealokacija(ljubimci);
+	dealokacija(ljubimci, n);
 	if (brojac != 0)
-		dealokacija(ljubimciMladi);
+		dealokacija(ljubimciMladi, brojac);
 
 	system("PAUSE");
 	return 0;
