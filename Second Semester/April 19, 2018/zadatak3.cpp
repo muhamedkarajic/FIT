@@ -123,20 +123,25 @@ struct Pacijent {
 void PovratNovca(Pacijent * pok, int max)
 {
 	double suma;
-	double akcija = 40;
+	double akcija = 100;
 	double ukupniTroskovi;
 
 	for (int i = 0; i < max; i++)
 	{
 		ukupniTroskovi = pok[i].GetUkupneTroskove();
-		suma;
-		cout << "Unesi sumu novca: ";
-		cin >> suma;
-		cin.ignore();
-
-		if (suma > akcija)
+		if (ukupniTroskovi > akcija)
 			ukupniTroskovi = ukupniTroskovi - ukupniTroskovi / 10;
 
+		suma;
+		do
+		{
+			cout << "Svi pregledi iznose: " << ukupniTroskovi << "KM." << endl;
+			cout << "Unesi sumu novca: ";
+			cin >> suma;
+		} while (suma < ukupniTroskovi);
+		cin.ignore();
+
+		
 		cout << pok[i].ImePrezime << "je potrebno vratiti: " << suma - ukupniTroskovi << "KM" << endl;
 	}
 }
@@ -185,7 +190,7 @@ void main()
 	cout << crt;
 
 	for (int i = 0; i < n; i++)
-		for (int j = 0; j < 3; j++)
+		for (int j = 0; j < 1; j++)
 			pacijenit[i].AddPregled();
 	cout << crt;
 
@@ -194,6 +199,10 @@ void main()
 
 	for (int i = 0; i < n; i++)
 		Dealokacija(pacijenit[i]);
+
+	/*delete pacijenit;
+	pacijenit = nullptr;*/
+	cout << pacijenit << endl;
 
 	system("PAUSE");
 }
