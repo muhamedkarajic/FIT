@@ -1,4 +1,4 @@
-## Programming I
+## Functional programming
 
 ### Faculty of Information Technologies, University "Džemal Bijedić"​ in Mostar.
 
